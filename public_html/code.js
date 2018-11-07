@@ -11,6 +11,7 @@ var F2 = { x: 0, y: 0, sentit: 0 };
 var F3 = { x: 0, y: 0, sentit: 0 };
 var Player = { x: 0, y: 0, sentit: 0, gir: 0 };
 InicialitzarMapa();
+
 InicialitzarJugadors();
 setInterval(Rellotge, 400);
 function Rellotge(){
@@ -43,17 +44,33 @@ function MoureJugador()
 			}
 		}else
 		{
-			//Player["sentit"]=SentitAleatori();
+			Player["sentit"]=SentitAleatori(Player["x"],Player["y"],Player["sentit"]);
+			Player["gir"]=Player["sentit"];
+			MoureJugador();
 		}
 }
 function SentitAleatori(x,y,sentit)
 {
-	var sentits;
-	if(Can(x,y,0))
+	var sentits = [];
+
+	if(Can(x,y,0) & sentit!=0 & sentit!=1)
 	{
-		
+		sentits[sentits.length]=0 ;
 	}
-	return 1;
+	if(Can(x,y,1)& sentit!=1 & sentit!=0)
+	{
+		sentits[sentits.length]=1;
+	}
+	if(Can(x,y,2)& sentit!=2 & sentit!=3)
+	{
+		sentits[sentits.length]=2;
+	} 
+	if(Can(x,y,3)& sentit!=3 &  sentit!=2)
+	{
+		sentits[sentits.length]=3;
+	}
+
+	return sentits[ parseInt(Math.random()*sentits.length)];
 }
 function InicialitzarMapa() {
 	var MapCode = "000000000000022222000000000000011111111111022222011111111110010101000001000200010100000010010101111111110201110111111110010100100000010101011100000010010100100011111111000111111110010111111110100101100000100000010101000010100100100111111110010101000010111111111100000010011101111110100100100111111110000101000010100100100100000100220111022011111111111111111102220001000010100000101010010002222211111110102220101010011222220001001010102220101010010002220111001010102220101011111102000100001010100000101000100100011100001010111111101011111110010111111110100000101010000010010100001011111111111110222010010100001010000100100010002010010111111111111111111111102010010100010101000000100000100010010100111111111111111111111110010100100000010101000000010010011111111111010201111111111110010010101001110201110010101010010010101001000200010010101010011111111111022222011111111110000000000000022222000000000000".split("");
@@ -106,6 +123,7 @@ function InicialitzarJugadors() {
 	} while (mapa[x][y] != 1);
 	F1["x"] = x;
 	F1["y"] = y;
+	F1["sentit"] = SentitAleatori(x,y,-1);
 	x = 0;
 	y = 0;
 	do {
@@ -114,6 +132,7 @@ function InicialitzarJugadors() {
 	} while (mapa[x][y] != 1);
 	F2["x"] = x;
 	F2["y"] = y;
+	F2["sentit"] = SentitAleatori(x,y,-1);
 	x = 0;
 	y = 0;
 	do {
@@ -122,6 +141,7 @@ function InicialitzarJugadors() {
 	} while (mapa[x][y] != 1);
 	F3["x"] = x;
 	F3["y"] = y;
+	F3["sentit"] = SentitAleatori(x,y,-1);
 	x = 0;
 	y = 0;
 	do {
@@ -130,7 +150,8 @@ function InicialitzarJugadors() {
 	} while (mapa[x][y] != 1);
 	Player["x"] = x;
 	Player["y"] = y;
-
+	Player["sentit"] = SentitAleatori(x,y,-1);
+	Player["gir"] = 	Player["sentit"] ;
 
 
 }
