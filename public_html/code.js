@@ -16,7 +16,7 @@ var F3 = { x: 0, y: 0, sentit: 0 };
 var Player = { x: 0, y: 0, sentit: 0, gir: 0 };
 InicialitzarMapa();
 InicialitzarJugadors();
-var interval = setInterval(Rellotge, 400);
+var interval = setInterval(Rellotge, 300);
 function Rellotge() {
 	Mouresubjecte(F1);
 	gameOver = 	HaChocat(false);
@@ -28,10 +28,6 @@ function Rellotge() {
 	gameOver = HaChocat(gameOver);
 	if(!gameOver)
 	ColocarElements();
-	if(gameOver)
-	{
-		
-	}
 }
 function Mouresubjecte(Sujeto) {
 	if ("gir" in Sujeto) {
@@ -60,13 +56,10 @@ function Mouresubjecte(Sujeto) {
 				return false;
 				break;
 		}
-
-
 }
 
 function SentitAleatori(x, y, sentit) {
 	var sentits = [];
-
 	if (Can(x, y, 0) & sentit != 1) {
 		sentits[sentits.length] = 0;
 	}
@@ -79,7 +72,6 @@ function SentitAleatori(x, y, sentit) {
 	if (Can(x, y, 3) & sentit != 2) {
 		sentits[sentits.length] = 3;
 	}
-
 	return sentits[parseInt(Math.random() * sentits.length)];
 }
 function InicialitzarMapa() {
@@ -161,8 +153,6 @@ function InicialitzarJugadors() {
 	Player["y"] = y;
 	Player["sentit"] = SentitAleatori(x, y, -1);
 	Player["gir"] = Player["sentit"];
-
-
 }
 function MostrarMapa() {
 	console.clear();
@@ -183,8 +173,7 @@ function MostrarMapa() {
 		out = out + "\n";
 	}
 	console.log(out);
-
-
+	console.log("Creat per Google Chrome");
 }
 function NetejarMapa() {
 	mapa_temp = new Array(30);
@@ -204,30 +193,20 @@ function ColocarElements() {
 	mapa_temp[F3["x"]][F3["y"]] = "5";
 	mapa_temp[Player["x"]][Player["y"]] = "6";
 	MostrarMapa();
-
-
 }
 
 function TeclaPitjada(e) {
 	if (e["code"] == "ArrowUp") {
-
 		Player["gir"] = 0;
-
 	} else
 		if (e["code"] == "ArrowDown") {
-
 			Player["gir"] = 1;
-
 		}
 	if (e["code"] == "ArrowRight") {
-
 		Player["gir"] = 2;
-
 	}
 	if (e["code"] == "ArrowLeft") {
-
 		Player["gir"] = 3;
-
 	}
 }
 function HaChocat(gameOver) {
