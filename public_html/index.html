@@ -1,9 +1,25 @@
 
 <!DOCTYPE html>
 <html>
- <script type="text/javascript" src="code.js"></script>
-<body id="all"></body>                                             
+ <link href="styles/estil.css" type="text/css" rel="stylesheet">
+<body id="all">      
+<img src="resources/muro.jpg"    id="muro"    style="display: none;"/>  
+<img src="resources/muro2.jpg"    id="muro2"    style="display: none;"/>     
+<img src="resources/fantasma.png"    id="fantasma"    style="display: none;"/>   
+<img src="resources/comecocosRight.png"    id="comecocosRight"    style="display: none;"/> 
+<img src="resources/comecocosLeft.png"    id="comecocosLeft"    style="display: none;"/>     
+<img src="resources/comecocosUp.png"    id="comecocosUp"    style="display: none;"/>     
+<img src="resources/comecocosDown.png"    id="comecocosDown"    style="display: none;"/>     
 
+<img src="resources/comecocosRightClo.png"    id="comecocosRightClo"    style="display: none;"/> 
+<img src="resources/comecocosLeftClo.png"    id="comecocosLeftClo"    style="display: none;"/>     
+<img src="resources/comecocosUpClo.png"    id="comecocosUpClo"    style="display: none;"/>     
+<img src="resources/comecocosDownClo.png"    id="comecocosDownClo"    style="display: none;"/>                              
+<div><div class="count" id="count">0</div></div>
+<canvas id="espai" width="600" height="600" margin="auto"> </canvas>
+<script type="text/javascript" src="code.js"></script>   
+<div><div class="count" id="max_count">0</div></div>
+</body>      
 <script>                                                          
    function notificaObservador(e) {                                
       TeclaPitjada(e);                                     
